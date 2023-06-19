@@ -1,0 +1,49 @@
+
+
+class DimmerSwitch():
+    def __init__(self):
+        self.isOn = False
+        self.brightness = 0
+
+    def turn_on(self):
+        self.isOn = True
+        self.brightness = 1
+
+    def turn_off(self):
+        self.isOn = False
+        self.brightness = 0
+
+    def raise_brightness(self):
+        if self.brightness < 10:
+            self.brightness += 1
+        self.isOn = True
+
+    def lower_brightness(self):
+        if self.brightness > 0:
+            self.brightness -= 1
+        if self.brightness == 0:
+            self.isOn = False
+
+    def show(self):
+        x = (lambda x: 'on' if (self.isOn) else 'off')(self.isOn)
+        print(f'The switch is {x} and its brightness is {self.brightness}.')
+
+dimmerSwitch = DimmerSwitch()
+
+dimmerSwitch.show()
+dimmerSwitch.lower_brightness()
+dimmerSwitch.show()
+dimmerSwitch.raise_brightness()
+dimmerSwitch.raise_brightness()
+dimmerSwitch.show()
+for i in range(20):
+    dimmerSwitch.raise_brightness()
+dimmerSwitch.show()
+dimmerSwitch.lower_brightness()
+dimmerSwitch.show()
+dimmerSwitch.turn_off()
+dimmerSwitch.show()
+dimmerSwitch.turn_on()
+dimmerSwitch.show()
+
+print(vars(dimmerSwitch))
